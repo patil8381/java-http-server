@@ -1,106 +1,134 @@
 package com.whatever;
-import com.web.Services.*;
+import com.web.services.*;	//created by Amit 
+				//webRequestHandler and abstract class created by Amit
 
 public class DateTimeServices extends WebRequestHandler
 {
 public void processRequest(WebRequest request,WebResponse response)
 {
+
+try
+{
 String whatIsRequired=request.getQueryStringValue("giveme");
+
 if(whatIsRequired==null)
 {
+System.out.println("========================");
+System.out.println("whatIsRequired is null ");
+System.out.println("========================");
+
 response.setContentType("text/html");
-response.wrteLine("<!DOCTYPE HTML>");
-response.wrteLine("<html>");
-response.wrteLine("<head>");
-response.wrteLine("<title>Some title<title>");
-response.wrteLine("</head>");
-response.wrteLine("<body>");
-response.wrteLine("<h1> INVALID REQUEST </h1>");
-response.wrteLine("<a href='index.html'/>Home</a>");
-response.wrteLine("</body>");
-response.wrteLine("</html>");
+response.writeLine("<!DOCTYPE HTML>");
+response.writeLine("<html>");
+response.writeLine("<head>");
+response.writeLine("<title>Some title<title>");
+response.writeLine("</head>");
+response.writeLine("<body>");
+response.writeLine("<h1> INVALID REQUEST </h1>");
+response.writeLine("<a href='index.html'/>Home</a>");
+response.writeLine("</body>");
+response.writeLine("</html>");
 }
-elseif(whatisRequired.equals("Date"))
+else if(whatIsRequired.equals("date"))
 {
+System.out.println("========================");
+System.out.println("whatIsRequired is date : "+whatIsRequired);
+System.out.println("========================");
+
 java.util.Date now=new java.util.Date();
-java.util.SimpleDateFormat simpleDateFormat;
-simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy");
-String nowString=simpleDateFormate.format(now);
+java.text.SimpleDateFormat simpleDateFormat;
+simpleDateFormat=new java.text.SimpleDateFormat("dd/MM/yyyy");
+String nowString=simpleDateFormat.format(now);
 
 response.setContentType("text/html");
-response.wrteLine("<!DOCTYPE HTML>");
-response.wrteLine("<html>");
-response.wrteLine("<head>");
-response.wrteLine("<title>Some title<title>");
-response.wrteLine("</head>");
-response.wrteLine("<body>");
-response.wrteLine("<img href='images/logo.png' />");
-response.wrteLine("<h1>Time : "+nowString+"</h1>");
-response.wrteLine("<a href='index.html'/>Home</a>");
-response.wrteLine("</body>");
-response.wrteLine("</html>");
-
-}
-elseif(whatisRequired.equals("Time"))
-{
-java.util.Date now=new java.util.Date();
-java.util.SimpleDateFormat simpleDateFormat;
-simpleDateFormat=new SimpleDateFormat("hh:mm:ss");
-
-String nowString=simpleDateFormate.format(now);
-
-response.setContentType("text/html");
-response.wrteLine("<!DOCTYPE HTML>");
-response.wrteLine("<html>");
-response.wrteLine("<head>");
-response.wrteLine("<title>Some title<title>");
-response.wrteLine("</head>");
-response.wrteLine("<body>");
-response.wrteLine("<img href='images/logo.png' />");
-response.wrteLine("<h1>Time : "+nowString+"</h1>");
-response.wrteLine("<a href='index.html'/>Home</a>");
-response.wrteLine("</body>");
-response.wrteLine("</html>");
+response.writeLine("<!DOCTYPE HTML>");
+response.writeLine("<html>");
+response.writeLine("<head>");
+response.writeLine("<title>Some title<title>");
+response.writeLine("</head>");
+response.writeLine("<body>");
+response.writeLine("<img href='images/logo.png' />");
+response.writeLine("<h1>Time : "+nowString+"</h1>");
+response.writeLine("<a href='index.html'/>Home</a>");
+response.writeLine("</body>");
+response.writeLine("</html>");
 
 }
-elseif(whatisRequired.equals("DateTime"))
+else if(whatIsRequired.equals("time"))
 {
-java.util.Date now=new java.util.Date();
-java.util.SimpleDateFormat simpleDateFormat;
-simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+System.out.println("========================");
+System.out.println("whatIsRequired is time : "+whatIsRequired);
+System.out.println("========================");
 
-String nowString=simpleDateFormate.format(now);
+java.util.Date now=new java.util.Date();
+java.text.SimpleDateFormat simpleDateFormat;
+simpleDateFormat=new java.text.SimpleDateFormat("hh:mm:ss");
+
+String nowString=simpleDateFormat.format(now);
 
 response.setContentType("text/html");
-response.wrteLine("<!DOCTYPE HTML>");
-response.wrteLine("<html>");
-response.wrteLine("<head>");
-response.wrteLine("<title>Some title<title>");
-response.wrteLine("</head>");
-response.wrteLine("<body>");
-response.wrteLine("<img href='images/logo.png' />");
-response.wrteLine("<h1>Time : "+nowString+"</h1>");
-response.wrteLine("<a href='index.html'/>Home</a>");
-response.wrteLine("</body>");
-response.wrteLine("</html>");
+response.writeLine("<!DOCTYPE HTML>");
+response.writeLine("<html>");
+response.writeLine("<head>");
+response.writeLine("<title>Some title<title>");
+response.writeLine("</head>");
+response.writeLine("<body>");
+response.writeLine("<img href='images/logo.png' />");
+response.writeLine("<h1>Time : "+nowString+"</h1>");
+response.writeLine("<a href='index.html'/>Home</a>");
+response.writeLine("</body>");
+response.writeLine("</html>");
+
+}
+else if(whatIsRequired.equals("datetime"))
+{
+System.out.println("========================");
+System.out.println("whatIsRequired is date time : "+whatIsRequired);
+System.out.println("========================");
+
+java.util.Date now=new java.util.Date();
+java.text.SimpleDateFormat simpleDateFormat;
+simpleDateFormat=new java.text.SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+
+String nowString=simpleDateFormat.format(now);
+
+response.setContentType("text/html");
+response.writeLine("<!DOCTYPE HTML>");
+response.writeLine("<html>");
+response.writeLine("<head>");
+response.writeLine("<title>Some title<title>");
+response.writeLine("</head>");
+response.writeLine("<body>");
+response.writeLine("<img href='images/logo.png' />");
+response.writeLine("<h1>Time : "+nowString+"</h1>");
+response.writeLine("<a href='index.html'/>Home</a>");
+response.writeLine("</body>");
+response.writeLine("</html>");
 
 }
 else
 {
+System.out.println("========================");
+System.out.println("whatIsRequired is something else : "+whatIsRequired);
+System.out.println("========================");
 
 response.setContentType("text/html");
-response.wrteLine("<!DOCTYPE HTML>");
-response.wrteLine("<html>");
-response.wrteLine("<head>");
-response.wrteLine("<title>Some title<title>");
-response.wrteLine("</head>");
-response.wrteLine("<body>");
-response.wrteLine("<h1>Invalid Request</h1>");
-response.wrteLine("<a href='index.html'/>Home</a>");
-response.wrteLine("</body>");
-response.wrteLine("</html>");
+response.writeLine("<!DOCTYPE HTML>");
+response.writeLine("<html>");
+response.writeLine("<head>");
+response.writeLine("<title>Some title<title>");
+response.writeLine("</head>");
+response.writeLine("<body>");
+response.writeLine("<h1>Invalid Request</h1>");
+response.writeLine("<a href='index.html'/>Home</a>");
+response.writeLine("</body>");
+response.writeLine("</html>");
 }
 
+}catch(Exception e)
+{
+System.out.println(e);
+}
 }
 
 }

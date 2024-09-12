@@ -43,7 +43,7 @@ bufferedReader=new BufferedReader(inputStreamReader);
 
 String line;
 System.out.println("Reading Infrastructure created");
-//Following loop reads the HTTP request Header
+	//Following loop reads the HTTP request Header
 String requestPath=null;
 while(true)
 {
@@ -57,6 +57,8 @@ requestPath=pcs[1];
 }
 System.out.println(line);
 }
+System.out.println("Request Path : "+requestPath);
+
 if(requestPath==null)
 {
 client.close();
@@ -76,11 +78,14 @@ fileToServe="web-app/index.html";
 }else
 {
 int indexOfQuestionMark=requestPath.indexOf("?");
+
+System.out.println("index of ? : "+indexOfQuestionMark);
+
 if(indexOfQuestionMark!=-1)
 {
 //requestPath has ?
 System.out.println("------------");
-queryString=requestPath.substring(0,indexOfQuestionMark+1);
+queryString=requestPath.substring(indexOfQuestionMark+1);
 String nameValuePairs[];
 nameValuePairs=queryString.split("&");
 if(nameValuePairs!=null)
@@ -111,6 +116,8 @@ requestDataMap.put(name,value);
 System.out.println("------------");
 
 String requestPathWithoutQueryString=requestPath.substring(0,indexOfQuestionMark);
+System.out.println("Request Path Without Query String "+requestPathWithoutQueryString);
+
 if(this.servicesMap.containsKey(requestPathWithoutQueryString))
 {
 String whichClass;
@@ -118,12 +125,14 @@ whichClass=this.servicesMap.get(requestPathWithoutQueryString);
 
 try
 {
+System.out.println("whichClass : : "+whichClass);
 Class c=Class.forName(whichClass);
+System.out.println("class name only : : "+c);
 webRequestHandler=(WebRequestHandler)c.newInstance();
 webRequest=new WebRequest(requestDataMap);
 webResponse=new WebResponse(outputStream);
 webRequestHandler.processRequest(webRequest,webResponse);
-System.out.println("------------");
+System.out.println(" : : "+whichClass);
 
 }catch(ClassNotFoundException e)
 {

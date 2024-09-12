@@ -4,7 +4,7 @@ import java.util.*;
 public class WebRequest
 {
 private Map<String,String> nameValuePairMap;
-public WebRequest(Map nameValuePairMap)
+public WebRequest(Map<String,String> nameValuePairMap)
 {
 this.nameValuePairMap=nameValuePairMap;
 }
