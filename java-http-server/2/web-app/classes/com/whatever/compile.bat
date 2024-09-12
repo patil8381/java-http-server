@@ -1,0 +1,1 @@
+javac -classpath ..\..\..\..\web-server\classes\ -d ..\..\..\..\web-server\classes\ *.java

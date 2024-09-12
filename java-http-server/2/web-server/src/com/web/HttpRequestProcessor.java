@@ -84,7 +84,7 @@ System.out.println("index of ? : "+indexOfQuestionMark);
 if(indexOfQuestionMark!=-1)
 {
 //requestPath has ?
-System.out.println("------------");
+
 queryString=requestPath.substring(indexOfQuestionMark+1);
 String nameValuePairs[];
 nameValuePairs=queryString.split("&");
@@ -113,10 +113,8 @@ value=URLDecoder.decode(value);
 requestDataMap.put(name,value);
 }
 }
-System.out.println("------------");
 
 String requestPathWithoutQueryString=requestPath.substring(0,indexOfQuestionMark);
-System.out.println("Request Path Without Query String "+requestPathWithoutQueryString);
 
 if(this.servicesMap.containsKey(requestPathWithoutQueryString))
 {
@@ -125,14 +123,11 @@ whichClass=this.servicesMap.get(requestPathWithoutQueryString);
 
 try
 {
-System.out.println("whichClass : : "+whichClass);
 Class c=Class.forName(whichClass);
-System.out.println("class name only : : "+c);
 webRequestHandler=(WebRequestHandler)c.newInstance();
 webRequest=new WebRequest(requestDataMap);
 webResponse=new WebResponse(outputStream);
 webRequestHandler.processRequest(webRequest,webResponse);
-System.out.println(" : : "+whichClass);
 
 }catch(ClassNotFoundException e)
 {
@@ -142,7 +137,6 @@ System.out.println(e);
 this.client.close();
 return;
 }
-System.out.println("------------");
 
 fileToServe="web-app"+requestPath.substring(0,indexOfQuestionMark);
 
@@ -150,7 +144,7 @@ fileToServe="web-app"+requestPath.substring(0,indexOfQuestionMark);
 else if(this.servicesMap.containsKey(requestPath))
 {
 			// TEMPORARY CODE in this else if block
-		
+	
 System.out.println("request path does not have  '=' in URL.");
 
 }
@@ -158,10 +152,10 @@ else
 {
 fileToServe="web-app"+requestPath;
 }
-
 }
 
 //code to read http request data
+System.out.println("File To server  : "+fileToServe);
 System.out.println("Preparing response");
 String responseHeader;
 StringBuilder responseHeaderBuilder=new StringBuilder();

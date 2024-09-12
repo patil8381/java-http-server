@@ -28,6 +28,9 @@ this.outputStream.write(responseHeaderBuilder.toString().getBytes());
 this.outputStream.flush();
 this.headerSent=true;
 }
+line=line+"\n";
+this.outputStream.write(line.getBytes());
+this.outputStream.flush();
 }
 
 }

@@ -1,0 +1,11 @@
+compile the DateTimeServices.java using 
+
+javac -classpath ..\..\..\..\web-server\classes\ -d ..\..\..\..\web-server\classes\ *.java
+
+command or just run the below command/.bat file 
+
+compile.bat
+	OR
+compile
+
+the command will be executed.
